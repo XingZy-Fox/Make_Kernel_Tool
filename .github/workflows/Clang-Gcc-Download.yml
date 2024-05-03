@@ -1,8 +1,7 @@
 name: Clang Gcc Download
 on: 
      workflow_dispatch:
-permissions:
-     contents: write
+permissions: write-all
 jobs:
      clang-gcc-download:
        runs-on: ubuntu-latest
@@ -18,24 +17,14 @@ jobs:
                   cd $GITHUB_WORKSPACE/kernel_workspace
                   mkdir clang-aosp
                   wget https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/+archive/refs/tags/android-12.1.0_r27.tar.gz
-          - name: 上传 Clang
-            uses: actions/upload-artifact@v3
-            with:
-              name: clang-r510928
-              path: kernel_workspace/clang-r510928.tar.gz
-          - name: 上传 Gcc
-            uses: actions/upload-artifact@v3
-            with:
-              name: gcc-android-12.1.0_r27
-              path: kernel_workspace/android-12.1.0_r27.tar.gz
           - name: Release
             id: create-release
             uses: softprops/action-gh-release@v1
             env:
                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             with:
-               tag_name: ${{ github.ref }}
-               name: Release ${{ github.ref }}
+               tag_name: Clang Gcc Download
+               name: Clang Gcc Download
                body: TODO New Release.
                draft: false
                prerelease: false
