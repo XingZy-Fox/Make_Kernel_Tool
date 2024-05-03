@@ -28,7 +28,4 @@ jobs:
                body: |
                      下载的Clang和Gcc。
                files:  $GITHUB_WORKSPACE/kernel_workspace/*
-               draft: true
-               fail_on_unmatched_files: true
-               prerelease: false
 
