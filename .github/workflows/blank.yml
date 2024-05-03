@@ -28,4 +28,6 @@ jobs:
                body: |
                      下载的Clang和Gcc。
                files:  $GITHUB_WORKSPACE/kernel_workspace/*
+               draft: true
+               prerelease: true
 
