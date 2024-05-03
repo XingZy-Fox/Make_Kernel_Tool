@@ -11,7 +11,7 @@ jobs:
             run: |
                   mkdir $GITHUB_WORKSPACE/kernel_workspace
                   cd $GITHUB_WORKSPACE/kernel_workspace
-                  wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+/refs/heads/main/clang-r510928.tar.gz
+                  wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/main/clang-r510928.tar.gz
           - name: Download Gcc
             run: |
                   cd $GITHUB_WORKSPACE/kernel_workspace
