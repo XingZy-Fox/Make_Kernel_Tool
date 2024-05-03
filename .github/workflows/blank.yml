@@ -22,10 +22,10 @@ jobs:
             uses: actions/upload-artifact@v3
             with:
               name: clang-r510928
-              path: $GITHUB_WORKSPACE/kernel_workspace/clang-r510928.tar.gz
+              path: kernel_workspace/clang-r510928.tar.gz
           - name: Upload Gcc
             uses: actions/upload-artifact@v3
             with:
               name: gcc-android-12.1.0_r27
-              path: $GITHUB_WORKSPACE/kernel_workspace/android-12.1.0_r27.tar.gz
+              path: kernel_workspace/android-12.1.0_r27.tar.gz
 
