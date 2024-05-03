@@ -7,12 +7,28 @@ jobs:
      clang-gcc-download:
        runs-on: ubuntu-latest
        steps:
-          - name: Download Clang-aosp
+          - name: Download Clang
             run: |
                   mkdir $GITHUB_WORKSPACE/kernel_workspace
                   cd $GITHUB_WORKSPACE/kernel_workspace
-                  mkdir clang-aosp
                   wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+/refs/heads/main/clang-r510928.tar.gz
+          - name: Download Gcc
+            run: |
+                  cd $GITHUB_WORKSPACE/kernel_workspace
+                  mkdir clang-aosp
                   wget https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/+archive/refs/tags/android-12.1.0_r27.tar.gz
+          - name: 上传 Release
+            id: create_release
+            uses: actions/create-release@v1
+            env:
+               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+            with:
+               tag_name: ${{ github.ref }}
+               release_name: Release ${{ github.ref }}
+               body: |
+                     下载的Clang和Gcc。
+               files:  $GITHUB_WORKSPACE/kernel_workspace/*
+               draft: true
+               fail_on_unmatched_files: true
+               prerelease: false
 
-           
