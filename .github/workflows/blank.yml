@@ -1,0 +1,16 @@
+name: Clang Gcc Download
+on: 
+     workflow_dispatch:
+permissions:
+     contents: write
+jobs:
+     clang-gcc-download:
+       runs-on: ubuntu-latest
+       steps:
+          - name: Download Clang-aosp
+            run: |
+                  cd $GITHUB_WORKSPACE/kernel_workspace
+                  mkdir clang-aosp
+                  wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+/refs/heads/main/clang-r510928.tar.gz
+
+           
