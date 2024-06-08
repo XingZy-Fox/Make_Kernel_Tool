@@ -18,7 +18,7 @@ jobs:
                   git config user.name "慕新志"  
                   git config user.email "muxinzhi9527@gmail.com"
                   repo init -u https://android.googlesource.com/kernel/manifest -b common-android12-5.10
-                  repo sync -j8
+                  repo sync
                   tar -czvf file.tar.gz $GITHUB_WORKSPACE/kernel_workspace
           - name: Release
             id: create-release
