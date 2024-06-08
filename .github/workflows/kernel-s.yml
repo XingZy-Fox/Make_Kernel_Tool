@@ -1,0 +1,35 @@
+name: Clang Gcc Download
+on: 
+     workflow_dispatch:
+permissions: write-all
+jobs:
+     clang-gcc-download:
+       runs-on: ubuntu-latest
+       steps:
+          - uses: actions/checkout@v3
+          - name: Download Clang
+            run: |
+                  mkdir $GITHUB_WORKSPACE/kernel_workspace
+                  cd $GITHUB_WORKSPACE/kernel_workspace
+                  curl https://storage.googleapis.com/git-repo-downloads/repo > repo
+                  chmod a+x repo
+                  export PATH=$GITHUB_WORKSPACE/kernel_workspace/repo:$PATH
+                  git config user.name "慕新志"  
+                  git config user.email "muxinzhi9527@gmail.com"
+                  repo init -u https://android.googlesource.com/kernel/manifest -b common-android12-5.10
+                  repo sync -j8
+                  tar -czvf file.tar.gz $GITHUB_WORKSPACE/kernel_workspace
+          - name: Release
+            id: create-release
+            uses: softprops/action-gh-release@v1
+            env:
+               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            with:
+               tag_name: 565656
+               name: Clang Gcc Download
+               body: TODO New Release.
+               draft: false
+               prerelease: false
+               files: |
+                 kernel_workspace/file.tar.gz
+                 
