@@ -1,4 +1,4 @@
-name: Clang Gcc Download
+name: Kernel Download
 on: 
      workflow_dispatch:
 permissions: write-all
