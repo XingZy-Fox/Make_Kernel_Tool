@@ -11,6 +11,7 @@ jobs:
             run: |
                   mkdir $GITHUB_WORKSPACE/kernel_workspace
                   cd $GITHUB_WORKSPACE/kernel_workspace
+                  sudo apt install curl git -y
                   curl https://storage.googleapis.com/git-repo-downloads/repo > repo
                   chmod a+x repo
                   export PATH=$GITHUB_WORKSPACE/kernel_workspace/repo:$PATH
