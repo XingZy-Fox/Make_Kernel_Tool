@@ -11,12 +11,11 @@ jobs:
             run: |
                   mkdir $GITHUB_WORKSPACE/kernel_workspace
                   cd $GITHUB_WORKSPACE/kernel_workspace
-                  wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/main/clang-r522817.tar.gz
+                  wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/master-kernel-build-2022/clang-r450784d.tar.gz
           - name: Download Gcc
             run: |
                   cd $GITHUB_WORKSPACE/kernel_workspace
-                  mkdir clang-aosp
-                  wget https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/+archive/refs/tags/android-12.1.0_r27.tar.gz
+                  
           - name: Release
             id: create-release
             uses: softprops/action-gh-release@v1
@@ -30,5 +29,5 @@ jobs:
                prerelease: false
                files: |
                  kernel_workspace/clang-r522817.tar.gz
-                 kernel_workspace/android-12.1.0_r27.tar.gz
+                 
                  
