@@ -24,6 +24,6 @@ jobs:
                draft: false
                prerelease: false
                files: |
-                 $GITHUB_WORKSPACE/kernel_workspace/clang-r416183b.tar.gz
+                 kernel_workspace/clang-r416183b.tar.gz
                  
                  
