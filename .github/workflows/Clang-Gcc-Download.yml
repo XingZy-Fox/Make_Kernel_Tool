@@ -11,23 +11,19 @@ jobs:
             run: |
                   mkdir $GITHUB_WORKSPACE/kernel_workspace
                   cd $GITHUB_WORKSPACE/kernel_workspace
-                  wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/master-kernel-build-2022/clang-r450784d.tar.gz
-          - name: Download Gcc
-            run: |
-                  cd $GITHUB_WORKSPACE/kernel_workspace
-                  
+                  wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/428d18d9732aa7ebfcaed87a582d86155db878d4/clang-r416183b.tar.gz
           - name: Release
             id: create-release
             uses: softprops/action-gh-release@v1
             env:
                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             with:
-               tag_name: 952700
-               name: Clang Gcc Download
+               tag_name: 952701
+               name: clang-r416183b Download
                body: TODO New Release.
                draft: false
                prerelease: false
                files: |
-                 kernel_workspace/clang-r522817.tar.gz
+                 $GITHUB_WORKSPACE/kernel_workspace/clang-r416183b.tar.gz
                  
                  
