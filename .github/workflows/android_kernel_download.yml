@@ -13,8 +13,7 @@ jobs:
          
                  mkdir -p android-kernel 
                  cd android-kernel
-                 repo init --depth 1 -u https://android.googlesource.com/kernel/manifest -b common-android12-5.10-2023-05
-                 repo sync
+                 git clone -b android12-5.10-2025-02 https://android.googlesource.com/kernel/common
                  cd ..
                  git clone https://github.com/lengxiaohua123/gki-lxc.git
                  cp ./gki-lxc/gki_defconfig ./android-kernel/common/arch/arm64/configs/gki_defconfig
