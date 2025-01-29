@@ -15,7 +15,7 @@ jobs:
                  repo init --depth 1 -u https://android.googlesource.com/kernel/manifest -b common-android12-5.10-2023-05
                  repo sync
                  cd ..
-                 git clone https://github.com/TapetalArray/gki-lxc
+                 git clone https://github.com/lengxiaohua123/gki-lxc.git
                  cp ./gki-lxc/gki_defconfig ./android-kernel/common/arch/arm64/configs/gki_defconfig
                  cd android-kernel/common
                  git apply ../../gki-lxc/*.patch
