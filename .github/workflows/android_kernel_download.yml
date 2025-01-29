@@ -1,0 +1,40 @@
+name: Clang Gcc Download
+on: 
+     workflow_dispatch:
+permissions: write-all
+jobs:
+     clang-gcc-download:
+       runs-on: ubuntu-latest
+       steps:
+          - uses: actions/checkout@v3
+          - name: Kernel Downloade
+            run: |
+                 apt install repo git -y
+         
+                 mkdir android-kernel & cd android-kernel
+                 repo init --depth 1 -u https://android.googlesource.com/kernel/manifest -b common-android12-5.10-2023-05
+                 repo sync
+                 cd ..
+                 git clone https://github.com/TapetalArray/gki-lxc
+                 cp ./gki-lxc/gki_defconfig ./android-kernel/common/arch/arm64/configs/gki_defconfig
+                 cd android-kernel/common
+                 git apply ../../gki-lxc/*.patch
+                 cd ..
+                 curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
+                 cd .. 
+                 tar -czvf archive.tar.gz android-kernel/*
+          - name: Release
+            id: create-release
+            uses: softprops/action-gh-release@v1
+            env:
+               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            with:
+               tag_name: 952701
+               name: clang-r416183b Download
+               body: TODO New Release.
+               draft: false
+               prerelease: false
+               files: |
+                 archive.tar.gz
+                 
+                 
