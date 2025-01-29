@@ -11,7 +11,8 @@ jobs:
             run: |
                  sudo apt install repo git -y
          
-                 mkdir android-kernel & cd android-kernel
+                 mkdir $GITHUB_WORKSPACE/kernel_workspace/android-kernel 
+                 cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
                  repo init --depth 1 -u https://android.googlesource.com/kernel/manifest -b common-android12-5.10-2023-05
                  repo sync
                  cd ..
@@ -30,11 +31,11 @@ jobs:
                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             with:
                tag_name: 952701
-               name: clang-r416183b Download
+               name: kernel Download
                body: TODO New Release.
                draft: false
                prerelease: false
                files: |
-                 archive.tar.gz
+                 kernel_workspace/archive.tar.gz
                  
                  
